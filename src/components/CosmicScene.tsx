@@ -4,7 +4,7 @@ import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { CosmicBackground } from "./CosmicBackground";
 import { GlowingStone } from "./GlowingStone";
 import { ExplosionEffect } from "./ExplosionEffect";
-import { TextReveal } from "./TextReveal";
+// import { TextReveal } from "./TextReveal";
 
 const STONE_COLORS = [
   "#ff4444",
@@ -30,7 +30,7 @@ export function CosmicScene() {
   >("approaching");
   const [animationProgress, setAnimationProgress] = useState(0);
   const [showExplosion, setShowExplosion] = useState(false);
-  const [showText, setShowText] = useState(false);
+  const [showText, setShowText] = useState(false); // legacy flag for internal control
   const [animationComplete, setAnimationComplete] = useState(false);
   const [hasExploded, setHasExploded] = useState(false);
   const [explosionComplete, setExplosionComplete] = useState(false);
@@ -213,11 +213,15 @@ export function CosmicScene() {
   }, [animationPhase, animationComplete]);
 
   const handleExplosionComplete = () => {
+    if (explosionComplete) return; // run once
     setShowExplosion(false);
     setShowText(true);
     setAnimationPhase("revealed");
     setAnimationComplete(true);
     setExplosionComplete(true);
+    try {
+      window.dispatchEvent(new CustomEvent("explosion-complete"));
+    } catch {}
   };
 
   return (

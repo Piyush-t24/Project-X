@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 interface ScrollSection {
   id: string;
@@ -55,19 +54,21 @@ export function ScrollSections() {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
 
-      // Start showing sections after first screen
-      const triggerPoint = windowHeight;
+      // Reveal as soon as the second screen begins to enter (~70% of first screen scrolled)
+      const triggerPoint = windowHeight * 0.7;
 
       setSections((prevSections) =>
         prevSections.map((section) => ({
           ...section,
-          visible: scrollY > triggerPoint, // All appear at same time
+          visible: scrollY >= triggerPoint,
         }))
       );
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true } as any);
+    // Run once on mount to set initial state if user is already scrolled
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll as any);
   }, []);
 
   const getTransformClass = (section: ScrollSection) => {
@@ -187,7 +188,7 @@ export function ScrollSections() {
       </div>
 
       {/* Floating animation keyframes */}
-      <style jsx>{`
+      <style>{`
         @keyframes float-stone-0 {
           0%,
           100% {

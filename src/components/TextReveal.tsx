@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
-import { useFrame } from '@react-three/fiber';
-import { Text } from '@react-three/drei';
-import * as THREE from 'three';
+import { useRef, useEffect, useState } from "react";
+import { useFrame } from "@react-three/fiber";
+import { Text } from "@react-three/drei";
+import * as THREE from "three";
 
 interface TextRevealProps {
   visible: boolean;
@@ -14,16 +14,18 @@ export function TextReveal({ visible }: TextRevealProps) {
 
   useFrame(() => {
     if (visible && opacity < 1) {
-      setOpacity(prev => Math.min(1, prev + 0.02));
+      setOpacity((prev) => Math.min(1, prev + 0.02));
     }
-    
+
     if (mainTextRef.current && subTextRef.current) {
-      const mainMaterial = mainTextRef.current.material as THREE.MeshStandardMaterial;
-      const subMaterial = subTextRef.current.material as THREE.MeshStandardMaterial;
-      
+      const mainMaterial = mainTextRef.current
+        .material as THREE.MeshStandardMaterial;
+      const subMaterial = subTextRef.current
+        .material as THREE.MeshStandardMaterial;
+
       mainMaterial.opacity = opacity;
       subMaterial.opacity = opacity;
-      
+
       // Gentle floating animation
       const time = Date.now() * 0.001;
       mainTextRef.current.position.y = Math.sin(time * 0.3) * 0.05;
@@ -38,7 +40,15 @@ export function TextReveal({ visible }: TextRevealProps) {
       {/* Main Text - Urja Sangam */}
       <Text
         ref={mainTextRef}
-        fontSize={window.innerWidth < 640 ? 1.2 : window.innerWidth < 768 ? 1.4 : window.innerWidth < 1024 ? 1.6 : 1.8}
+        fontSize={
+          window.innerWidth < 640
+            ? 1.2
+            : window.innerWidth < 768
+            ? 1.4
+            : window.innerWidth < 1024
+            ? 1.6
+            : 1.8
+        }
         letterSpacing={0.1}
         textAlign="center"
         anchorX="center"
@@ -46,7 +56,7 @@ export function TextReveal({ visible }: TextRevealProps) {
         font="https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6BoWgz.woff2"
       >
         Urja Sangam –
-        <meshStandardMaterial 
+        <meshStandardMaterial
           color="#ffffff"
           emissive="#4a90e2"
           emissiveIntensity={0.8}
@@ -54,12 +64,14 @@ export function TextReveal({ visible }: TextRevealProps) {
           opacity={0}
         />
       </Text>
-      
+
       {/* Subtitle - COMING SOON */}
       <Text
         ref={subTextRef}
         position={[0, window.innerWidth < 640 ? -0.6 : -0.8, 0]}
-        fontSize={window.innerWidth < 640 ? 0.4 : window.innerWidth < 768 ? 0.5 : 0.6}
+        fontSize={
+          window.innerWidth < 640 ? 0.4 : window.innerWidth < 768 ? 0.5 : 0.6
+        }
         letterSpacing={0.15}
         textAlign="center"
         anchorX="center"
@@ -67,7 +79,7 @@ export function TextReveal({ visible }: TextRevealProps) {
         font="https://fonts.gstatic.com/s/orbitron/v31/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6BoWgz.woff2"
       >
         COMING SOON
-        <meshStandardMaterial 
+        <meshStandardMaterial
           color="#ffffff"
           emissive="#ffffff"
           emissiveIntensity={0.6}
@@ -75,18 +87,18 @@ export function TextReveal({ visible }: TextRevealProps) {
           opacity={0}
         />
       </Text>
-      
+
       {/* Blue glow around main text */}
-      <pointLight 
+      <pointLight
         position={[0, 0, 0.5]}
         color="#4a90e2"
         intensity={opacity * 4}
         distance={15}
         decay={2}
       />
-      
+
       {/* White glow around subtitle */}
-      <pointLight 
+      <pointLight
         position={[0, -0.8, 0.5]}
         color="#ffffff"
         intensity={opacity * 2}
