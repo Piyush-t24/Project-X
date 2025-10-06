@@ -5,7 +5,7 @@ export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'HOME', href: '#home' },
+    { name: 'HOME', href: '/' },
     { name: 'EVENTS', href: '#events' },
     { name: 'MERCHANDISE', href: '#merchandise' },
     { name: 'SCHEDULE', href: '#schedule' },
@@ -29,13 +29,13 @@ export function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="hidden lg:block">
+            <div className="ml-4 lg:ml-10 flex items-baseline space-x-2 lg:space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-white hover:text-orange-400 px-3 py-2 text-sm font-medium tracking-wider transition-colors duration-200 hover:bg-white/5 rounded-md"
+                  className="text-white hover:text-orange-400 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium tracking-wider transition-colors duration-200 hover:bg-white/5 rounded-md"
                 >
                   {item.name}
                 </a>
@@ -44,14 +44,14 @@ export function Navbar() {
           </div>
 
           {/* Register Button */}
-          <div className="hidden md:block">
-            <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 transform hover:scale-105 shadow-lg">
+          <div className="hidden lg:block">
+            <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-4 lg:px-6 py-2 rounded-full text-xs lg:text-sm font-semibold tracking-wide transition-all duration-200 transform hover:scale-105 shadow-lg">
               REGISTER
             </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white hover:text-orange-400 p-2 rounded-md transition-colors duration-200"
@@ -64,20 +64,20 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/30 backdrop-blur-md border-t border-white/10">
+        <div className="lg:hidden bg-black/30 backdrop-blur-md border-t border-white/10">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-white hover:text-orange-400 block px-3 py-2 text-base font-medium tracking-wide transition-colors duration-200 hover:bg-white/5 rounded-md"
+                className="text-white hover:text-orange-400 block px-3 py-2 text-sm md:text-base font-medium tracking-wide transition-colors duration-200 hover:bg-white/5 rounded-md"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
               </a>
             ))}
             <div className="pt-4 pb-2">
-              <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg">
+              <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-4 md:px-6 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 shadow-lg">
                 REGISTER
               </button>
             </div>

@@ -1,35 +1,52 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface ScrollSection {
   id: string;
   title: string;
-  direction: 'bottom' | 'left' | 'right';
+  direction: "bottom" | "left" | "right";
   visible: boolean;
   colors: string[];
+  stoneCount: number;
 }
 
 export function ScrollSections() {
+  const navigate = useNavigate();
   const [sections, setSections] = useState<ScrollSection[]>([
-    { 
-      id: 'urjotsav', 
-      title: 'Urjotsav', 
-      direction: 'left', 
+    // First row
+    {
+      id: "urjotsav",
+      title: "Urjotsav",
+      direction: "left",
       visible: false,
-      colors: ['#44ff44', '#ffff44'] // Green and Yellow stones
+      colors: ["#44ff44", "#ffff44"], // Green and Yellow stones
+      stoneCount: 2,
     },
-    { 
-      id: 'kaltarang', 
-      title: 'Kaltarang', 
-      direction: 'bottom', 
+    {
+      id: "kaltarang",
+      title: "Kaltarang",
+      direction: "right",
       visible: false,
-      colors: ['#ff4444', '#4444ff'] // Red and Blue stones
+      colors: ["#ff4444", "#4444ff"], // Red and Blue stones
+      stoneCount: 2,
     },
-    { 
-      id: 'energia', 
-      title: 'Energia', 
-      direction: 'right', 
+    // Second row
+    {
+      id: "energia",
+      title: "Energia",
+      direction: "left",
       visible: false,
-      colors: ['#ff44ff', '#ff8844'] // Magenta and Orange stones
+      colors: ["#ff44ff"], // Magenta stone
+      stoneCount: 1,
+    },
+    {
+      id: "sauhardya",
+      title: "Sauhardya",
+      direction: "right",
+      visible: false,
+      colors: ["#ff8844"], // Orange stone
+      stoneCount: 1,
     },
   ]);
 
@@ -37,125 +54,157 @@ export function ScrollSections() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
-      
+
       // Start showing sections after first screen
       const triggerPoint = windowHeight;
-      
-      setSections(prevSections => 
-        prevSections.map(section => ({
+
+      setSections((prevSections) =>
+        prevSections.map((section) => ({
           ...section,
-          visible: scrollY > triggerPoint // All appear at same time
+          visible: scrollY > triggerPoint, // All appear at same time
         }))
       );
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const getTransformClass = (section: ScrollSection) => {
     if (!section.visible) {
       switch (section.direction) {
-        case 'bottom':
-          return 'translate-y-full opacity-0';
-        case 'left':
-          return '-translate-x-full opacity-0';
-        case 'right':
-          return 'translate-x-full opacity-0';
+        case "bottom":
+          return "translate-y-full opacity-0";
+        case "left":
+          return "-translate-x-full opacity-0";
+        case "right":
+          return "translate-x-full opacity-0";
         default:
-          return 'opacity-0';
+          return "opacity-0";
       }
     }
-    return 'translate-x-0 translate-y-0 opacity-100';
+    return "translate-x-0 translate-y-0 opacity-100";
   };
 
-  const getStonePositions = (direction: string) => {
-    switch (direction) {
-      case 'bottom':
-        return [
-          { left: '25%', bottom: '-15%' },
-          { right: '25%', bottom: '-15%' }
-        ];
-      case 'left':
-        return [
-          { left: '-15%', top: '25%' },
-          { left: '-15%', bottom: '25%' }
-        ];
-      case 'right':
-        return [
-          { right: '-15%', top: '25%' },
-          { right: '-15%', bottom: '25%' }
-        ];
-      default:
-        return [];
+  const getStonePositions = (stoneCount: number) => {
+    if (stoneCount === 1) {
+      return [{ left: "50%", bottom: "-12%", transform: "translateX(-50%)" }];
+    } else {
+      return [
+        { left: "30%", bottom: "-12%" },
+        { right: "30%", bottom: "-12%" },
+      ];
     }
   };
+
+  const handleCardClick = (festivalId: string) => {
+    navigate(`/${festivalId}`);
+  };
+
+  // Split sections into two rows
+  const firstRow = sections.slice(0, 2);
+  const secondRow = sections.slice(2, 4);
+
+  const renderRow = (rowSections: ScrollSection[]) => (
+    <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16 w-full max-w-7xl px-4 md:px-8">
+      {rowSections.map((section) => (
+        <div key={section.id} className="relative">
+          {/* Main transparent div */}
+          <div
+            onClick={() => handleCardClick(section.id)}
+            className={`
+              relative w-72 sm:w-80 md:w-96 lg:w-80 xl:w-96
+              h-48 sm:h-56 md:h-64 lg:h-60 xl:h-64
+              bg-white/10 backdrop-blur-md 
+              border border-white/20 
+              rounded-xl md:rounded-2xl shadow-2xl
+              transition-all duration-1000 ease-out
+              hover:bg-white/15 hover:border-white/30 hover:scale-105
+              cursor-pointer
+              ${getTransformClass(section)}
+            `}
+          >
+            {/* Content */}
+            <div className="flex flex-col items-center justify-center h-full p-4 md:p-6 lg:p-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-white mb-3 md:mb-4 tracking-wider text-center">
+                {section.title}
+              </h2>
+              <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mb-3 md:mb-4"></div>
+              <p className="text-white/80 text-center text-base md:text-lg">
+                Coming Soon
+              </p>
+            </div>
+
+            {/* Glowing border effect */}
+            <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-r from-orange-400/20 to-red-500/20 blur-sm -z-10"></div>
+          </div>
+
+          {/* Floating stones */}
+          {getStonePositions(section.stoneCount).map((position, stoneIndex) => (
+            <div
+              key={stoneIndex}
+              className={`
+                absolute w-6 sm:w-7 md:w-8 lg:w-7 xl:w-8 
+                h-6 sm:h-7 md:h-8 lg:h-7 xl:h-8
+                rounded-full shadow-lg
+                transition-all duration-1000 ease-out delay-300
+                ${
+                  section.visible
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-50"
+                }
+              `}
+              style={{
+                ...position,
+                background: `radial-gradient(circle, ${
+                  section.colors[stoneIndex] || section.colors[0]
+                }, ${section.colors[stoneIndex] || section.colors[0]}88)`,
+                boxShadow: `0 0 20px ${
+                  section.colors[stoneIndex] || section.colors[0]
+                }88, 0 0 40px ${
+                  section.colors[stoneIndex] || section.colors[0]
+                }44`,
+                animation: section.visible
+                  ? `float-stone-${stoneIndex} 3s ease-in-out infinite`
+                  : "none",
+              }}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className="relative">
-      {/* Single container for all three divs */}
-      <div className="h-screen w-full relative flex items-center justify-center">
-        <div className="flex items-center justify-center gap-16 w-full max-w-6xl px-8">
-          {sections.map((section, index) => (
-            <div key={section.id} className="relative">
-              {/* Main transparent div */}
-              <div
-                className={`
-                  relative w-80 h-60 
-                  bg-white/10 backdrop-blur-md 
-                  border border-white/20 
-                  rounded-2xl shadow-2xl
-                  transition-all duration-1000 ease-out
-                  ${getTransformClass(section)}
-                `}
-              >
-                {/* Content */}
-                <div className="flex flex-col items-center justify-center h-full p-8">
-                  <h2 className="text-4xl font-bold text-white mb-4 tracking-wider">
-                    {section.title}
-                  </h2>
-                  <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mb-4"></div>
-                  <p className="text-white/80 text-center text-lg">
-                    Coming Soon
-                  </p>
-                </div>
+      {/* Container for both rows */}
+      <div className="min-h-screen w-full relative flex flex-col items-center justify-center gap-12 md:gap-16 lg:gap-20 py-8 md:py-16">
+        {/* First Row */}
+        {renderRow(firstRow)}
 
-                {/* Glowing border effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400/20 to-red-500/20 blur-sm -z-10"></div>
-              </div>
-
-              {/* Floating stones - same as explosion stones */}
-              {getStonePositions(section.direction).map((position, stoneIndex) => (
-                <div
-                  key={stoneIndex}
-                  className={`
-                    absolute w-8 h-8 
-                    rounded-full shadow-lg
-                    transition-all duration-1000 ease-out delay-300
-                    ${section.visible ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}
-                  `}
-                  style={{
-                    ...position,
-                    background: `radial-gradient(circle, ${section.colors[stoneIndex]}, ${section.colors[stoneIndex]}88)`,
-                    boxShadow: `0 0 20px ${section.colors[stoneIndex]}88, 0 0 40px ${section.colors[stoneIndex]}44`,
-                    animation: section.visible ? `float-stone-${stoneIndex} 3s ease-in-out infinite` : 'none'
-                  }}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
+        {/* Second Row */}
+        {renderRow(secondRow)}
       </div>
 
       {/* Floating animation keyframes */}
       <style jsx>{`
         @keyframes float-stone-0 {
-          0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
-          50% { transform: translateY(-10px) translateX(5px) scale(1.1); }
+          0%,
+          100% {
+            transform: translateY(0px) translateX(0px) scale(1);
+          }
+          50% {
+            transform: translateY(-10px) translateX(5px) scale(1.1);
+          }
         }
         @keyframes float-stone-1 {
-          0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
-          50% { transform: translateY(-8px) translateX(-5px) scale(1.1); }
+          0%,
+          100% {
+            transform: translateY(0px) translateX(0px) scale(1);
+          }
+          50% {
+            transform: translateY(-8px) translateX(-5px) scale(1.1);
+          }
         }
       `}</style>
     </div>
