@@ -1,32 +1,55 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const path = location.pathname.split("/").filter(Boolean);
+  const currentFestival = path.length > 0 ? path[0] : "";
+  const isFestivalRoute = [
+    "urjotsav",
+    "kaltarang",
+    "energia",
+    "sauhardya",
+  ].includes(currentFestival);
 
-  const navItems = [
-    { name: 'HOME', href: '/' },
-    { name: 'EVENTS', href: '#events' },
-    { name: 'MERCHANDISE', href: '#merchandise' },
-    { name: 'SCHEDULE', href: '#schedule' },
-    { name: 'GALLERY', href: '#gallery' },
-    { name: 'SPONSORS', href: '#sponsors' },
-    { name: 'CONTACTS', href: '#contacts' },
-  ];
+  const navItems = isFestivalRoute
+    ? [
+        { name: "HOME", href: `/${currentFestival}` },
+        { name: "EVENTS", href: `/${currentFestival}/events` },
+        { name: "SCHEDULE", href: `/${currentFestival}/schedule` },
+        { name: "GALLERY", href: `/${currentFestival}/gallery` },
+      ]
+    : [
+        { name: "HOME", href: "/" },
+        { name: "EVENTS", href: "#events" },
+        { name: "MERCHANDISE", href: "#merchandise" },
+        { name: "SCHEDULE", href: "#schedule" },
+        { name: "GALLERY", href: "#gallery" },
+        { name: "SPONSORS", href: "#sponsors" },
+        { name: "CONTACTS", href: "#contacts" },
+      ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
+          {/* Logo (click to go Home) */}
+          <a
+            href={isFestivalRoute ? `/${currentFestival}` : `/`}
+            className="flex items-center space-x-2 hover:opacity-90 transition-opacity"
+          >
             <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">U</span>
             </div>
             <span className="text-white font-bold text-xl tracking-wide">
-              URJA SANGAM
+              {isFestivalRoute
+                ? currentFestival.charAt(0).toUpperCase() +
+                  currentFestival.slice(1)
+                : "URJA SANGAM"}
             </span>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:block">
