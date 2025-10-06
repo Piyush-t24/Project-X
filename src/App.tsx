@@ -2,7 +2,12 @@ import { Routes, Route } from "react-router-dom";
 import { CosmicScene } from "./components/CosmicScene";
 import { Navbar } from "./components/Navbar";
 import { ScrollSections } from "./components/ScrollSections";
-import { FestivalPage } from "./components/FestivalPage";
+import { KaltarangPage } from "./Pages/KaltarangPage";
+import { UrjotsavPage } from "./Pages/UrjotsavPage";
+import { EnergiaPage } from "./Pages/EnergiaPage";
+import { SauhardyaPage } from "./Pages/SauhardyaPage";
+import { FestivalSectionPage } from "./Pages/FestivalSectionPage";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
@@ -25,21 +30,17 @@ function App() {
               {/* Scroll sections with transparent divs */}
               <ScrollSections />
             </div>
+            <Footer brand="Urja Sangam" />
           </div>
         }
       />
-      <Route
-        path="/urjotsav"
-        element={<FestivalPage festivalName="Urjotsav" />}
-      />
-      <Route
-        path="/kaltarang"
-        element={<FestivalPage festivalName="Kaltarang" />}
-      />
-      <Route
-        path="/energia"
-        element={<FestivalPage festivalName="Energia" />}
-      />
+      <Route path="/urjotsav" element={<UrjotsavPage />} />
+      <Route path="/kaltarang" element={<KaltarangPage />} />
+      <Route path="/energia" element={<EnergiaPage />} />
+      <Route path="/sauhardya" element={<SauhardyaPage />} />
+      <Route path=":festival/events" element={<FestivalSectionPage />} />
+      <Route path=":festival/schedule" element={<FestivalSectionPage />} />
+      <Route path=":festival/gallery" element={<FestivalSectionPage />} />
     </Routes>
   );
 }
