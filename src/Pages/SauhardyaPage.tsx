@@ -56,6 +56,11 @@ export function SauhardyaPage() {
             </div>
           </div>
         </section>
+        <div className="relative z-10 pt-24">
+          <div className="h-screen w-full flex items-center justify-center">
+            <p className="text-white/80">More content coming soon...</p>
+          </div>
+        </div>
       </div>
       <Footer brand="Sauhardya" />
     </div>

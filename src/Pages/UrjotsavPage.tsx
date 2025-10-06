@@ -70,6 +70,11 @@ export function UrjotsavPage() {
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400/20 to-red-500/20 blur-sm -z-10" />
           </div>
         </section>
+        <div className="relative z-10 pt-24">
+          <div className="h-screen w-full flex items-center justify-center">
+            <p className="text-white/80">More content coming soon...</p>
+          </div>
+        </div>
       </div>
       <Footer brand="Urjotsav" />
     </div>

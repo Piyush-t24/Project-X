@@ -37,7 +37,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo (click to go Home) */}
           <a
-            href={isFestivalRoute ? `/${currentFestival}` : `/`}
+            href="/"
             className="flex items-center space-x-2 hover:opacity-90 transition-opacity"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
