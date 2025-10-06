@@ -222,7 +222,7 @@ export function CosmicScene() {
 
   return (
     <div className="fixed inset-0 w-full h-full bg-black overflow-hidden">
-      <Canvas className="w-full h-full">
+      <Canvas className="w-full h-full pointer-events-none">
         <PerspectiveCamera
           makeDefault
           position={[0, 0, 8]}
@@ -233,7 +233,7 @@ export function CosmicScene() {
         {animationComplete && (
           <OrbitControls
             enablePan={false}
-            enableZoom={window.innerWidth >= 1024}
+            enableZoom={false}
             enableRotate={true}
             autoRotate={true}
             autoRotateSpeed={window.innerWidth < 768 ? 0.3 : 0.5}
