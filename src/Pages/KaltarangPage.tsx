@@ -36,31 +36,31 @@ export function KaltarangPage() {
       {/* Scrollable overlay content */}
       <div className="relative z-10">
         {/* Hero screen */}
-        <section className="h-screen w-full flex items-center justify-center px-6">
+        <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6">
           <div className="text-center max-w-4xl">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-wider text-white mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-wider text-white mb-4">
               KALTARANG'25
             </h1>
-            <div className="w-28 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto mb-6" />
-            <p className="text-white/80 text-lg sm:text-xl">
+            <div className="w-20 sm:w-24 md:w-28 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto mb-6" />
+            <p className="text-white/80 text-base sm:text-lg md:text-xl">
               RGIPT's Annual Cultural Fest
             </p>
-            <div className="mt-8 flex items-center justify-center gap-3 sm:gap-4">
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4">
               <Link
                 to="/kaltarang/events"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base transition"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3 sm:px-4 md:px-6 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
               >
                 Events
               </Link>
               <Link
                 to="/kaltarang/schedule"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base transition"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3 sm:px-4 md:px-6 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
               >
                 Schedule
               </Link>
               <Link
                 to="/kaltarang/gallery"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base transition"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3 sm:px-4 md:px-6 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
               >
                 Gallery
               </Link>
@@ -69,12 +69,12 @@ export function KaltarangPage() {
         </section>
 
         {/* About section screen */}
-        <section className="h-screen w-full flex items-center justify-center px-6">
-          <div className="relative max-w-5xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-wide">
+        <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6">
+          <div className="relative max-w-5xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-2xl">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 tracking-wide">
               About KALTARANG'25
             </h2>
-            <p className="text-white/85 leading-relaxed text-base sm:text-lg">
+            <p className="text-white/85 leading-relaxed text-sm sm:text-base md:text-lg">
               Kaltarang is RGIPTs annual cultural fest, renowned for being a
               dynamic and immersive celebration of art, culture, and talent.
               Since its inception, Kaltarang has grown into a prestigious
@@ -90,25 +90,25 @@ export function KaltarangPage() {
         </section>
 
         {/* CTA / Links screen */}
-        <section className="h-screen w-full flex items-center justify-center px-6">
+        <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6">
           <div className="flex flex-col items-center gap-4">
-            <p className="text-white/80 text-lg">Explore more</p>
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <p className="text-white/80 text-base sm:text-lg">Explore more</p>
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4">
               <Link
                 to="/kaltarang/events"
-                className="bg-gradient-to-r from-orange-500/80 to-red-500/80 hover:from-orange-500 hover:to-red-500 text-white px-5 py-2 rounded-full text-sm sm:text-base transition"
+                className="bg-gradient-to-r from-orange-500/80 to-red-500/80 hover:from-orange-500 hover:to-red-500 text-white px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
               >
                 Explore Events
               </Link>
               <Link
                 to="/kaltarang/schedule"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-2 rounded-full text-sm sm:text-base transition"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
               >
                 View Schedule
               </Link>
               <Link
                 to="/kaltarang/gallery"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-5 py-2 rounded-full text-sm sm:text-base transition"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
               >
                 Open Gallery
               </Link>

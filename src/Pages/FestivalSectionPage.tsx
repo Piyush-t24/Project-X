@@ -71,12 +71,12 @@ export function FestivalSectionPage() {
       </div>
 
       {/* Content overlay */}
-      <div className="relative z-10 pt-24">
-        <div className="h-screen w-full flex items-center justify-center">
+      <div className="relative z-10 pt-20 sm:pt-24">
+        <div className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6">
           <Content />
         </div>
-        <div className="h-screen w-full flex items-center justify-center">
-          <p className="text-white/80">More content coming soon...</p>
+        <div className="h-screen w-full flex items-center justify-center px-4 sm:px-6">
+          <p className="text-white/80 text-sm sm:text-base">More content coming soon...</p>
         </div>
       </div>
       <Footer

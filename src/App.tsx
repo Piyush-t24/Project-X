@@ -38,21 +38,16 @@ function App() {
               <section
                 id="home-hero"
                 style={{ display: "none" }}
-                className="w-full px-6"
+                className="w-full h-screen flex items-center justify-center px-4 sm:px-6"
               >
-                <div
-                  className="w-full flex items-center justify-center"
-                  style={{ minHeight: "calc(100vh - 64px)" }}
-                >
-                  <div className="text-center max-w-4xl mx-auto">
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-wider text-white mb-4">
-                      URJA SANGAM
-                    </h1>
-                    <div className="w-28 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto mb-6" />
-                    <p className="text-white/80 text-lg sm:text-xl">
-                      Coming Soon...
-                    </p>
-                  </div>
+                <div className="text-center max-w-4xl mx-auto">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider text-white mb-4">
+                    URJA SANGAM
+                  </h1>
+                  <div className="w-20 sm:w-24 md:w-28 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto mb-6" />
+                  <p className="text-white/80 text-base sm:text-lg md:text-xl">
+                    Coming Soon...
+                  </p>
                 </div>
               </section>
 
