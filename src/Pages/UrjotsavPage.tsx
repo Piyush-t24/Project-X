@@ -27,31 +27,31 @@ export function UrjotsavPage() {
       </div>
 
       <div className="relative z-10">
-        <section className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6 pt-16">
-          <div className="text-center max-w-4xl -mt-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-wider text-white mb-4">
+        <section className="h-screen w-full flex items-center justify-center px-6">
+          <div className="text-center max-w-4xl">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-wider text-white mb-4">
               URJOTSAV'25
             </h1>
-            <div className="w-20 sm:w-24 md:w-28 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto mb-6" />
-            <p className="text-white/80 text-base sm:text-lg md:text-xl">
+            <div className="w-28 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto mb-6" />
+            <p className="text-white/80 text-lg sm:text-xl">
               RGIPT's Annual Techno-Management Fest
             </p>
-            <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4">
+            <div className="mt-8 flex items-center justify-center gap-3 sm:gap-4">
               <Link
                 to="/urjotsav/events"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3 sm:px-4 md:px-6 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base transition"
               >
                 Events
               </Link>
               <Link
                 to="/urjotsav/schedule"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3 sm:px-4 md:px-6 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base transition"
               >
                 Schedule
               </Link>
               <Link
                 to="/urjotsav/gallery"
-                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-3 sm:px-4 md:px-6 py-2 rounded-full text-xs sm:text-sm md:text-base transition"
+                className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base transition"
               >
                 Gallery
               </Link>
@@ -59,19 +59,19 @@ export function UrjotsavPage() {
           </div>
         </section>
 
-        <section className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6">
-          <div className="relative max-w-5xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-2xl">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 tracking-wide">
+        <section className="h-screen w-full flex items-center justify-center px-6">
+          <div className="relative max-w-5xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 tracking-wide">
               About URJOTSAV'25
             </h2>
-            <p className="text-white/85 leading-relaxed text-sm sm:text-base md:text-lg">
+            <p className="text-white/85 leading-relaxed text-base sm:text-lg">
               Details coming soon.
             </p>
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400/20 to-red-500/20 blur-sm -z-10" />
           </div>
         </section>
         <div className="relative z-10 pt-24">
-          <div className="min-h-screen w-full flex items-center justify-center px-4">
+          <div className="h-screen w-full flex items-center justify-center">
             <p className="text-white/80">More content coming soon...</p>
           </div>
         </div>

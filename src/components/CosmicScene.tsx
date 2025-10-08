@@ -231,7 +231,7 @@ export function CosmicScene() {
           makeDefault
           position={[0, 0, 8]}
           fov={
-            window.innerWidth < 640 ? 90 : window.innerWidth < 768 ? 85 : window.innerWidth < 1024 ? 80 : 75
+            window.innerWidth < 768 ? 85 : window.innerWidth < 1024 ? 80 : 75
           }
         />
         {animationComplete && (

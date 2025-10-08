@@ -107,17 +107,17 @@ export function ScrollSections() {
   const secondRow = sections.slice(2, 4);
 
   const renderRow = (rowSections: ScrollSection[]) => (
-    <div className="flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-16 w-full max-w-7xl px-4 sm:px-6 md:px-8">
+    <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16 w-full max-w-7xl px-4 md:px-8">
       {rowSections.map((section) => (
         <div key={section.id} className="relative">
           {/* Main transparent div */}
           <div
             onClick={() => handleCardClick(section.id)}
             className={`
-              relative w-[85vw] max-w-[320px] sm:max-w-[340px] md:w-72 md:max-w-none lg:w-80 xl:w-96
-              h-44 sm:h-48 md:h-56 lg:h-60 xl:h-64
-              bg-white/10 backdrop-blur-md
-              border border-white/20
+              relative w-72 sm:w-80 md:w-96 lg:w-80 xl:w-96
+              h-48 sm:h-56 md:h-64 lg:h-60 xl:h-64
+              bg-white/10 backdrop-blur-md 
+              border border-white/20 
               rounded-xl md:rounded-2xl shadow-2xl
               transition-all duration-1000 ease-out
               hover:bg-white/15 hover:border-white/30 hover:scale-105
@@ -126,12 +126,12 @@ export function ScrollSections() {
             `}
           >
             {/* Content */}
-            <div className="flex flex-col items-center justify-center h-full p-4 sm:p-5 md:p-6 lg:p-8">
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold text-white mb-2 sm:mb-3 md:mb-4 tracking-wider text-center">
+            <div className="flex flex-col items-center justify-center h-full p-4 md:p-6 lg:p-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl xl:text-4xl font-bold text-white mb-3 md:mb-4 tracking-wider text-center">
                 {section.title}
               </h2>
-              <div className="w-10 sm:w-12 md:w-16 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mb-2 sm:mb-3 md:mb-4"></div>
-              <p className="text-white/80 text-center text-sm sm:text-base md:text-lg">
+              <div className="w-12 md:w-16 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mb-3 md:mb-4"></div>
+              <p className="text-white/80 text-center text-base md:text-lg">
                 Coming Soon
               </p>
             </div>
@@ -145,8 +145,8 @@ export function ScrollSections() {
             <div
               key={stoneIndex}
               className={`
-                absolute w-5 sm:w-6 md:w-7 lg:w-7 xl:w-8
-                h-5 sm:h-6 md:h-7 lg:h-7 xl:h-8
+                absolute w-6 sm:w-7 md:w-8 lg:w-7 xl:w-8 
+                h-6 sm:h-7 md:h-8 lg:h-7 xl:h-8
                 rounded-full shadow-lg
                 transition-all duration-1000 ease-out delay-300
                 ${
@@ -179,7 +179,7 @@ export function ScrollSections() {
   return (
     <div className="relative">
       {/* Container for both rows */}
-      <div className="min-h-screen w-full relative flex flex-col items-center justify-center gap-8 sm:gap-10 md:gap-14 lg:gap-20 py-6 sm:py-8 md:py-16">
+      <div className="min-h-screen w-full relative flex flex-col items-center justify-center gap-12 md:gap-16 lg:gap-20 py-8 md:py-16">
         {/* First Row */}
         {renderRow(firstRow)}
 

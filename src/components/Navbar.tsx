@@ -43,7 +43,7 @@ export function Navbar() {
             <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">U</span>
             </div>
-            <span className="text-white font-bold text-base sm:text-lg md:text-xl tracking-wide">
+            <span className="text-white font-bold text-xl tracking-wide">
               {isFestivalRoute
                 ? currentFestival.charAt(0).toUpperCase() +
                   currentFestival.slice(1)
@@ -52,13 +52,13 @@ export function Navbar() {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-4 md:ml-6 lg:ml-10 flex items-baseline space-x-2 md:space-x-4 lg:space-x-8">
+          <div className="hidden lg:block">
+            <div className="ml-4 lg:ml-10 flex items-baseline space-x-2 lg:space-x-8">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-white hover:text-orange-400 px-2 md:px-2 lg:px-3 py-2 text-xs md:text-xs lg:text-sm font-medium tracking-wider transition-colors duration-200 hover:bg-white/5 rounded-md"
+                  className="text-white hover:text-orange-400 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium tracking-wider transition-colors duration-200 hover:bg-white/5 rounded-md"
                 >
                   {item.name}
                 </a>
@@ -67,14 +67,14 @@ export function Navbar() {
           </div>
 
           {/* Register Button */}
-          <div className="hidden md:block">
-            <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-3 md:px-4 lg:px-6 py-2 rounded-full text-xs md:text-xs lg:text-sm font-semibold tracking-wide transition-all duration-200 transform hover:scale-105 shadow-lg">
+          <div className="hidden lg:block">
+            <button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-4 lg:px-6 py-2 rounded-full text-xs lg:text-sm font-semibold tracking-wide transition-all duration-200 transform hover:scale-105 shadow-lg">
               REGISTER
             </button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-white hover:text-orange-400 p-2 rounded-md transition-colors duration-200"
@@ -87,7 +87,7 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/30 backdrop-blur-md border-t border-white/10">
+        <div className="lg:hidden bg-black/30 backdrop-blur-md border-t border-white/10">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <a
