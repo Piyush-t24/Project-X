@@ -36,8 +36,8 @@ export function KaltarangPage() {
       {/* Scrollable overlay content */}
       <div className="relative z-10">
         {/* Hero screen */}
-        <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6">
-          <div className="text-center max-w-4xl">
+        <section className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6 pt-16">
+          <div className="text-center max-w-4xl -mt-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-wider text-white mb-4">
               KALTARANG'25
             </h1>
@@ -69,7 +69,7 @@ export function KaltarangPage() {
         </section>
 
         {/* About section screen */}
-        <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6">
+        <section className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6">
           <div className="relative max-w-5xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-2xl">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 tracking-wide">
               About KALTARANG'25
@@ -90,7 +90,7 @@ export function KaltarangPage() {
         </section>
 
         {/* CTA / Links screen */}
-        <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6">
+        <section className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6">
           <div className="flex flex-col items-center gap-4">
             <p className="text-white/80 text-base sm:text-lg">Explore more</p>
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4">
@@ -116,7 +116,7 @@ export function KaltarangPage() {
           </div>
         </section>
         <div className="relative z-10 pt-24">
-          <div className="h-screen w-full flex items-center justify-center">
+          <div className="min-h-screen w-full flex items-center justify-center px-4">
             <p className="text-white/80">More content coming soon...</p>
           </div>
         </div>

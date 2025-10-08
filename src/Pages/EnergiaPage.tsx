@@ -25,8 +25,8 @@ export function EnergiaPage() {
         </Canvas>
       </div>
       <div className="relative z-10">
-        <section className="h-screen w-full flex items-center justify-center px-4 sm:px-6">
-          <div className="text-center max-w-4xl">
+        <section className="min-h-screen w-full flex items-center justify-center px-4 sm:px-6 pt-16">
+          <div className="text-center max-w-4xl -mt-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-wider text-white mb-4">
               ENERGIA'25
             </h1>
@@ -57,7 +57,7 @@ export function EnergiaPage() {
           </div>
         </section>
         <div className="relative z-10 pt-24">
-          <div className="h-screen w-full flex items-center justify-center">
+          <div className="min-h-screen w-full flex items-center justify-center px-4">
             <p className="text-white/80">More content coming soon...</p>
           </div>
         </div>

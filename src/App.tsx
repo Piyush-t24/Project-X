@@ -38,9 +38,9 @@ function App() {
               <section
                 id="home-hero"
                 style={{ display: "none" }}
-                className="w-full h-screen flex items-center justify-center px-4 sm:px-6"
+                className="w-full min-h-screen flex items-center justify-center px-4 sm:px-6 pt-16"
               >
-                <div className="text-center max-w-4xl mx-auto">
+                <div className="text-center max-w-4xl mx-auto -mt-8">
                   <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wider text-white mb-4">
                     URJA SANGAM
                   </h1>
@@ -55,7 +55,7 @@ function App() {
               <ScrollSections />
             </div>
             <div className="relative z-10 pt-24">
-              <div className="h-screen w-full flex items-center justify-center">
+              <div className="min-h-screen w-full flex items-center justify-center px-4">
                 <p className="text-white/80">More content coming soon...</p>
               </div>
             </div>

@@ -41,8 +41,8 @@ export function FestivalPage({ festivalName }: FestivalPageProps) {
       {/* Content overlay - same scrollable structure as home */}
       <div className="relative z-10">
         {/* First screen - hero */}
-        <div className="h-screen w-full flex items-center justify-center">
-          <div className="text-center px-4 sm:px-6">
+        <div className="min-h-screen w-full flex items-center justify-center pt-16">
+          <div className="text-center px-4 sm:px-6 -mt-8">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 tracking-wider">
               {festivalName}
             </h1>
@@ -54,7 +54,7 @@ export function FestivalPage({ festivalName }: FestivalPageProps) {
         </div>
 
         {/* Second screen - placeholder sections for scroll parity */}
-        <div className="h-screen w-full flex items-center justify-center px-4">
+        <div className="min-h-screen w-full flex items-center justify-center px-4">
           <div className="relative w-[85vw] max-w-[320px] sm:max-w-[360px] md:w-96 h-48 sm:h-56 md:h-64 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl sm:rounded-2xl shadow-2xl flex items-center justify-center">
             <p className="text-white/80 text-center px-4 sm:px-6 text-sm sm:text-base">
               Details reveal soon. Stay tuned.
@@ -64,7 +64,7 @@ export function FestivalPage({ festivalName }: FestivalPageProps) {
         </div>
 
         {/* Third screen - placeholder */}
-        <div className="h-screen w-full flex items-center justify-center px-4">
+        <div className="min-h-screen w-full flex items-center justify-center px-4">
           <div className="relative w-[85vw] max-w-[320px] sm:max-w-[360px] md:w-96 h-48 sm:h-56 md:h-64 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl sm:rounded-2xl shadow-2xl flex items-center justify-center">
             <p className="text-white/80 text-center px-4 sm:px-6 text-sm sm:text-base">
               Follow our socials for updates.
