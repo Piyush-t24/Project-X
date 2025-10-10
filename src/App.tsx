@@ -69,9 +69,9 @@ function App() {
       <Route path="/kaltarang" element={<KaltarangPage />} />
       <Route path="/energia" element={<EnergiaPage />} />
       <Route path="/sauhardya" element={<SauhardyaPage />} />
-      <Route path=":festival/events" element={<FestivalSectionPage />} />
-      <Route path=":festival/schedule" element={<FestivalSectionPage />} />
-      <Route path=":festival/gallery" element={<FestivalSectionPage />} />
+      <Route path="/:festival/events" element={<FestivalSectionPage />} />
+      <Route path="/:festival/schedule" element={<FestivalSectionPage />} />
+      <Route path="/:festival/gallery" element={<FestivalSectionPage />} />
     </Routes>
   );
 }
