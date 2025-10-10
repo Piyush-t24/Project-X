@@ -1,3 +1,9 @@
+import Gallery from "../Gallery.tsx";
+
 export function SauhardyaGallery() {
-  return <div className="text-white">Sauhardya Gallery page</div>;
+  return (
+    <div className=" pt-20">
+      <Gallery />
+    </div>
+  );
 }

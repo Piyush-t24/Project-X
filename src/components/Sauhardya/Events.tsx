@@ -1,3 +1,9 @@
+import Events from "../Events.tsx";
+
 export function SauhardyaEvents() {
-  return <div className="text-white">Sauhardya Events page</div>;
+  return (
+    <div className="pt-24">
+      <Events />
+    </div>
+  );
 }
