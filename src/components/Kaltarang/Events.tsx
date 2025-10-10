@@ -1,4 +1,4 @@
-import Events from "../Events.tsx";
+import Events from "../Events";
 
 export function KaltarangEvents() {
   return (

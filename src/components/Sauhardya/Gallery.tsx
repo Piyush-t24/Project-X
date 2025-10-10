@@ -1,4 +1,4 @@
-import Gallery from "../Gallery.tsx";
+import Gallery from "../Gallery";
 
 export function SauhardyaGallery() {
   return (
