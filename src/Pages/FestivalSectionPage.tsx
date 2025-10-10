@@ -14,7 +14,7 @@ import { KaltarangEvents } from "../components/Kaltarang/Events";
 import { KaltarangSchedule } from "../components/Kaltarang/Schedule";
 import { KaltarangGallery } from "../components/Kaltarang/Gallery";
 // Energia
-import { EnergiaEvents } from "../components/Energia/Events";
+import { EnergiaPage } from "../components/Energia/Events";
 import { EnergiaSchedule } from "../components/Energia/Schedule";
 import { EnergiaGallery } from "../components/Energia/Gallery";
 // Sauhardya
@@ -35,7 +35,7 @@ export function FestivalSectionPage() {
   if (section === "events") {
     if (fest === "urjotsav") Content = UrjotsavEvents;
     else if (fest === "kaltarang") Content = KaltarangEvents;
-    else if (fest === "energia") Content = EnergiaEvents;
+    else if (fest === "energia") Content = EnergiaPage;
     else if (fest === "sauhardya") Content = SauhardyaEvents;
   } else if (section === "schedule") {
     if (fest === "urjotsav") Content = UrjotsavSchedule;
@@ -72,12 +72,18 @@ export function FestivalSectionPage() {
 
       {/* Content overlay */}
       <div className="relative z-10 pt-24">
-        <div className="h-screen w-full flex items-center justify-center">
+        {section === "schedule" ? (
           <Content />
-        </div>
-        <div className="h-screen w-full flex items-center justify-center">
-          <p className="text-white/80">More content coming soon...</p>
-        </div>
+        ) : (
+          <>
+            <div className="h-screen w-full flex items-center justify-center">
+              <Content />
+            </div>
+            <div className="h-screen w-full flex items-center justify-center">
+              <p className="text-white/80">More content coming soon...</p>
+            </div>
+          </>
+        )}
       </div>
       <Footer
         brand={(festival || "Urja Sangam").replace(/^./, (c) =>

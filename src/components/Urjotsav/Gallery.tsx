@@ -1,3 +1,9 @@
+import Gallery from "../Gallery.tsx";
+
 export function UrjotsavGallery() {
-  return <div className="text-white">Urjotsav Gallery page</div>;
+  return (
+    <div className=" pt-20">
+      <Gallery />
+    </div>
+  );
 }

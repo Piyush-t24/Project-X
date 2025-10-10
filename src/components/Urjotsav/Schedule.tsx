@@ -1,3 +1,5 @@
+import { SchedulePage } from "../SchedulePage";
+
 export function UrjotsavSchedule() {
-  return <div className="text-white">Urjotsav Schedule page</div>;
+  return <SchedulePage />;
 }

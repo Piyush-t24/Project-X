@@ -9,6 +9,7 @@ import { EnergiaPage } from "./Pages/EnergiaPage";
 import { SauhardyaPage } from "./Pages/SauhardyaPage";
 import { FestivalSectionPage } from "./Pages/FestivalSectionPage";
 import { Footer } from "./components/Footer";
+import Gallery from "./components/Gallery.tsx";
 
 function App() {
   useEffect(() => {
@@ -45,7 +46,7 @@ function App() {
                   style={{ minHeight: "calc(100vh - 64px)" }}
                 >
                   <div className="text-center max-w-4xl mx-auto">
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-wider text-white mb-4">
+                    <h1 className="text-7xl sm:text-6xl lg:text-7xl font-extrabold tracking-wider text-white mb-4">
                       URJA SANGAM
                     </h1>
                     <div className="w-28 h-1 bg-gradient-to-r from-orange-400 to-red-500 rounded-full mx-auto mb-6" />
@@ -59,11 +60,7 @@ function App() {
               {/* Scroll sections with transparent divs */}
               <ScrollSections />
             </div>
-            <div className="relative z-10 pt-24">
-              <div className="h-screen w-full flex items-center justify-center">
-                <p className="text-white/80">More content coming soon...</p>
-              </div>
-            </div>
+            <Gallery />
             <Footer brand="Urja Sangam" />
           </div>
         }
