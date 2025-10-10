@@ -1,3 +1,9 @@
-export function EnergiaEvents() {
-  return <div className="text-white">Energia Events page</div>;
+import Events from "../Events.tsx";
+
+export function EnergiaPage() {
+  return (
+    <div className="pt-24">
+      <Events />
+    </div>
+  );
 }
