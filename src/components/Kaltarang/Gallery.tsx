@@ -1,3 +1,9 @@
+import Gallery from "../Gallery.tsx";
+
 export function KaltarangGallery() {
-  return <div className="text-white">Kaltarang Gallery page</div>;
+  return (
+    <div className=" pt-20">
+      <Gallery />
+    </div>
+  );
 }

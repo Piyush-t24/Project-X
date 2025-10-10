@@ -1,3 +1,9 @@
+import Events from "../Events.tsx";
+
 export function KaltarangEvents() {
-  return <div className="text-white">Kaltarang Events page</div>;
+  return (
+    <div className="pt-24">
+      <Events />
+    </div>
+  );
 }
