@@ -10,11 +10,11 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { CosmicBackground } from "../components/CosmicBackground";
 
-// Video import for the hero section
-import stoneVideo from "/Urjotsav/UrjotsavStone.mp4";
+// Video path for the hero section
+const stoneVideo = "/Urjotsav/UrjotsavStone.mp4";
 
-// Image import for the 'About' section
-import urjotsavPhoto from "/Urjotsav/Urjotsav.jpg";
+// Image path for the 'About' section
+const urjotsavPhoto = "/Urjotsav/Urjotsav.jpg";
 
 // Swiper.js imports for the carousel
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,17 +24,17 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/effect-coverflow";
 
-// Image imports for event images
-import bgmiImage from "/Urjotsav/BGMI.png";
-import droneDeliveryImage from "/Urjotsav/Drone_Delivery.png";
-import hackathonImage from "/Urjotsav/Hackathon.png";
-import lineFollowerImage from "/Urjotsav/Line_Follower.png";
-import mazeFollowerImage from "/Urjotsav/Maze_Follower.png";
-import rcPlaneImage from "/Urjotsav/RC_Plane.png";
-import roboRaceImage from "/Urjotsav/Robo_Race.png";
-import roboSoccerImage from "/Urjotsav/Robo_Soccer.png";
-import valorantImage from "/Urjotsav/Valorant.png";
-import grungeTexture from "/Urjotsav/UrjotsavBackground.png";
+// Image paths for event images
+const bgmiImage = "/Urjotsav/BGMI.png";
+const droneDeliveryImage = "/Urjotsav/Drone_Delivery.png";
+const hackathonImage = "/Urjotsav/Hackathon.png";
+const lineFollowerImage = "/Urjotsav/Line_Follower.png";
+const mazeFollowerImage = "/Urjotsav/Maze_Follower.png";
+const rcPlaneImage = "/Urjotsav/RC_Plane.png";
+const roboRaceImage = "/Urjotsav/Robo_Race.png";
+const roboSoccerImage = "/Urjotsav/Robo_Soccer.png";
+const valorantImage = "/Urjotsav/Valorant.png";
+const grungeTexture = "/Urjotsav/UrjotsavBackground.png";
 
 // ==============================================================================
 // TYPE DEFINITIONS
