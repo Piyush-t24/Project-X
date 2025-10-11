@@ -7,7 +7,8 @@ import React from "react";
 
 // Three.js imports for the background
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+// import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { PerspectiveCamera } from "@react-three/drei";
 import { CosmicBackground } from "../components/CosmicBackground";
 
 // Video path for the hero section
