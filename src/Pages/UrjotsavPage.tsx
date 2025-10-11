@@ -11,7 +11,7 @@ import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { CosmicBackground } from "../components/CosmicBackground";
 
 // Video import for the hero section
-import stoneVideo from "/Urjotsav/Urjotsav stone.mp4";
+import stoneVideo from "/Urjotsav/UrjotsavStone.mp4";
 
 // Image import for the 'About' section
 import urjotsavPhoto from "/Urjotsav/Urjotsav.jpg";
