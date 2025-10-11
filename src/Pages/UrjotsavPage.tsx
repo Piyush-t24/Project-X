@@ -280,13 +280,13 @@ export function UrjotsavPage(): JSX.Element {
       </div>
 
       {/* ===== BACKGROUND ===== */}
-      {/* <div className="fixed inset-0 w-full h-full bg-black overflow-hidden">
+      <div className="fixed inset-0 w-full h-full bg-black overflow-hidden">
         <Canvas className="w-full h-full">
           <PerspectiveCamera makeDefault position={[0, 0, 1.5]} fov={75} />
           <CosmicBackground />
         </Canvas>
-      </div> */}
-      <div className="fixed inset-0 w-full h-full bg-black overflow-hidden">
+      </div>
+      {/* <div className="fixed inset-0 w-full h-full bg-black overflow-hidden">
         <Canvas className="w-full h-full pointer-events-none">
           <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={75} />
           <OrbitControls
@@ -300,7 +300,7 @@ export function UrjotsavPage(): JSX.Element {
           <directionalLight position={[10, 10, 5]} intensity={0.2} />
           <CosmicBackground />
         </Canvas>
-      </div>
+      </div> */}
 
       {/* ===== SCROLLING CONTENT WRAPPER ===== */}
       <div className="relative z-10 flex-1 pointer-events-none">
@@ -324,11 +324,21 @@ export function UrjotsavPage(): JSX.Element {
             className="absolute top-0 left-0 w-full h-full object-contain"
             style={{
               mixBlendMode: "screen",
-              filter: "contrast(110%)",
-              opacity: videoLoaded ? 0.3 : 0,
+              filter: "contrast(110%) blur(2px)",
+              opacity: videoLoaded ? 0.5 : 0,
               transition: "opacity 1s ease-in-out",
             }}
           />
+          {/* Gradient overlay to blend video edges */}
+          {/* <div
+            className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"
+            style={{
+              background: `
+                radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.1) 30%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.5) 100%),
+                linear-gradient(45deg, rgba(0,0,0,0.1) 0%, transparent 50%, rgba(0,0,0,0.1) 100%)
+              `,
+            }}
+          /> */}
           <div className="relative z-20 text-center max-w-4xl">
             <AnimatedHeading
               as="h1"

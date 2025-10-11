@@ -30,154 +30,13 @@ export function CosmicScene() {
   >("approaching");
   const [animationProgress, setAnimationProgress] = useState(0);
   const [showExplosion, setShowExplosion] = useState(false);
-  const [showText, setShowText] = useState(false); // legacy flag for internal control
   const [animationComplete, setAnimationComplete] = useState(false);
   const [hasExploded, setHasExploded] = useState(false);
   const [explosionComplete, setExplosionComplete] = useState(false);
 
   const startTimeRef = useRef<number>(0);
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const soundsEnabledRef = useRef(false);
-
-  // Initialize Web Audio API
-  useEffect(() => {
-    const initAudio = () => {
-      try {
-        // Create AudioContext for generating sounds
-        audioContextRef.current = new (window.AudioContext ||
-          (window as any).webkitAudioContext)();
-        soundsEnabledRef.current = true;
-      } catch (error) {
-        console.log("Web Audio API not supported, continuing without audio");
-      }
-    };
-
-    // Initialize on first user interaction
-    const handleFirstInteraction = () => {
-      initAudio();
-      document.removeEventListener("click", handleFirstInteraction);
-      document.removeEventListener("keydown", handleFirstInteraction);
-    };
-
-    document.addEventListener("click", handleFirstInteraction);
-    document.addEventListener("keydown", handleFirstInteraction);
-
-    // Cleanup
-    return () => {
-      document.removeEventListener("click", handleFirstInteraction);
-      document.removeEventListener("keydown", handleFirstInteraction);
-      if (audioContextRef.current) {
-        audioContextRef.current.close();
-      }
-    };
-  }, []);
-
-  // Function to create approach sound (whoosh)
-  const playApproachSound = () => {
-    if (!soundsEnabledRef.current || !audioContextRef.current) return;
-
-    const ctx = audioContextRef.current;
-    const oscillator = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-    const filter = ctx.createBiquadFilter();
-
-    oscillator.connect(filter);
-    filter.connect(gainNode);
-    gainNode.connect(ctx.destination);
-
-    // Create whoosh sound
-    oscillator.type = "sawtooth";
-    oscillator.frequency.setValueAtTime(200, ctx.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(
-      50,
-      ctx.currentTime + 2.5
-    );
-
-    filter.type = "lowpass";
-    filter.frequency.setValueAtTime(1000, ctx.currentTime);
-    filter.frequency.exponentialRampToValueAtTime(200, ctx.currentTime + 2.5);
-
-    gainNode.gain.setValueAtTime(0, ctx.currentTime);
-    gainNode.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.1);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.5);
-
-    oscillator.start(ctx.currentTime);
-    oscillator.stop(ctx.currentTime + 2.5);
-  };
-
-  // Function to create explosion sound
-  const playExplosionSound = () => {
-    if (!soundsEnabledRef.current || !audioContextRef.current) return;
-
-    const ctx = audioContextRef.current;
-
-    // Create multiple oscillators for rich explosion sound
-    for (let i = 0; i < 3; i++) {
-      const oscillator = ctx.createOscillator();
-      const gainNode = ctx.createGain();
-      const filter = ctx.createBiquadFilter();
-
-      oscillator.connect(filter);
-      filter.connect(gainNode);
-      gainNode.connect(ctx.destination);
-
-      // Different frequencies for each layer
-      const baseFreq = 80 + i * 40;
-      oscillator.type = i === 0 ? "sawtooth" : "square";
-      oscillator.frequency.setValueAtTime(baseFreq, ctx.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(
-        baseFreq * 0.1,
-        ctx.currentTime + 0.8
-      );
-
-      filter.type = "lowpass";
-      filter.frequency.setValueAtTime(2000 - i * 500, ctx.currentTime);
-      filter.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.8);
-
-      gainNode.gain.setValueAtTime(0, ctx.currentTime);
-      gainNode.gain.linearRampToValueAtTime(
-        0.4 - i * 0.1,
-        ctx.currentTime + 0.01
-      );
-      gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
-
-      oscillator.start(ctx.currentTime);
-      oscillator.stop(ctx.currentTime + 0.8);
-    }
-
-    // Add noise burst for explosion
-    const bufferSize = ctx.sampleRate * 0.5;
-    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-    const data = buffer.getChannelData(0);
-
-    for (let i = 0; i < bufferSize; i++) {
-      data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 2);
-    }
-
-    const noiseSource = ctx.createBufferSource();
-    const noiseGain = ctx.createGain();
-    const noiseFilter = ctx.createBiquadFilter();
-
-    noiseSource.buffer = buffer;
-    noiseSource.connect(noiseFilter);
-    noiseFilter.connect(noiseGain);
-    noiseGain.connect(ctx.destination);
-
-    noiseFilter.type = "bandpass";
-    noiseFilter.frequency.setValueAtTime(500, ctx.currentTime);
-
-    noiseGain.gain.setValueAtTime(0.6, ctx.currentTime);
-    noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
-
-    noiseSource.start(ctx.currentTime);
-  };
   useEffect(() => {
     startTimeRef.current = Date.now();
-
-    // Play approach sound when animation starts
-    if (animationPhase === "approaching") {
-      playApproachSound();
-    }
 
     const animate = () => {
       const elapsed = (Date.now() - startTimeRef.current) / 1000;
@@ -195,9 +54,6 @@ export function CosmicScene() {
         elapsed >= 0.5 &&
         !hasExploded
       ) {
-        // Play explosion sound
-        playExplosionSound();
-
         setAnimationPhase("exploding");
         setShowExplosion(true);
         setHasExploded(true);
@@ -215,7 +71,6 @@ export function CosmicScene() {
   const handleExplosionComplete = () => {
     if (explosionComplete) return; // run once
     setShowExplosion(false);
-    setShowText(true);
     setAnimationPhase("revealed");
     setAnimationComplete(true);
     setExplosionComplete(true);
